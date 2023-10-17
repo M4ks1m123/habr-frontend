@@ -9,7 +9,6 @@ export default function ClientPage() {
 
   return (
     <section className="">
-      <Topbar/>
       <button type="button" class="btn btn-primary">Primary</button>
     </section>
   )

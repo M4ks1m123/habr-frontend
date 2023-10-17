@@ -30,7 +30,6 @@ function Topbar() {
   return (
     <div>
       {sessionStatus ? <h1>authenticated</h1> : <h1>unauthenticated</h1>}
-      <h1>Blocked</h1>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -109,7 +108,9 @@ function Topbar() {
             </form>
 
             {sessionStatus ? (
-              <Image src="/assets/profile.svg" width={40} height={40} />
+              <a href="/account">
+                <Image src="/assets/profile.svg" width={40} height={40}/>
+              </a>
             ) : (
               <Link href="/api/auth/signin">Sign in?</Link>
             )}

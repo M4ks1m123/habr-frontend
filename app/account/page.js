@@ -1,0 +1,27 @@
+'use client'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { getServerSession } from 'next-auth';
+import UserCard from "@/components/UserCard";
+import { useSession } from 'next-auth/react';
+import { options } from '../api/auth/[...nextauth]/options';
+import { redirect } from 'next/dist/server/api-utils';
+
+export default function AccountPage() {
+
+    const {data: session} = useSession({
+        required: true,
+        onUnauthenticated(){
+            redirect('api/auth/signin?callbackUrl=/client')
+        }
+    });
+
+    console.log({data: session})
+    const test = session?.user.name;
+
+  return (
+    <section className="">
+        <h1> {test} </h1>
+      <UserCard user={session?.user}></UserCard>
+    </section>
+  )
+}
