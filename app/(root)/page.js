@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react"
-import AuthProvider from "./(root)/context/AuthProvider"
+import AuthProvider from "./context/AuthProvider"
 import { redirect } from "next/dist/server/api-utils"
-import UserCard from '../components/UserCard'
+import UserCard from '../../components/UserCard'
 import Topbar from "@/components/shared/Topbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
