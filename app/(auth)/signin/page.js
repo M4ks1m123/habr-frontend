@@ -1,5 +1,6 @@
 'use client'
 import { getCsrfToken, signIn } from "next-auth/react"
+import Link from "next/link";
 import { useRef } from "react"
 
 export default function SignIn({ csrfToken }) {
@@ -28,6 +29,7 @@ export default function SignIn({ csrfToken }) {
                 <input name="password" type="password" onChange={(e) => (password.current = e.target.value)} />
             </label>
             <button onClick={onSubmit}>Sign in</button>
+            <Link href='signup'>Sign up</Link>
         </form>
     )
 }

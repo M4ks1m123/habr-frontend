@@ -34,10 +34,10 @@ export const options = {
             },
         })
     ],
-    /*
+    
     pages:{
-        //signIn: 'signin',
+        signIn: '/signin',
         //signOut: '/auth/signout',
     }
-    */
+    
 }
