@@ -4,16 +4,16 @@ import { getServerSession } from 'next-auth';
 import UserCard from "@/components/UserCard";
 import { useSession } from 'next-auth/react';
 import { options } from '../api/auth/[...nextauth]/options';
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 
 export default function AccountPage() {
 
     const {data: session} = useSession({
         required: true,
         onUnauthenticated(){
-            redirect('api/auth/signin?callbackUrl=/client')
+            redirect('api/auth/signin?callbackUrl=/account')
         }
-    });
+    })
 
     console.log({data: session})
     const test = session?.user.name;
