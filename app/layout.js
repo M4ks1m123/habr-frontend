@@ -5,7 +5,7 @@ import Topbar from '@/components/shared/Topbar'
 import LeftSidebar from '@/components/shared/LeftSideBar'
 import RightSidebar from '@/components/shared/RightSideBar'
 import Bottombar from '@/components/shared/BottomBar'
-import AuthProvider from './context/AuthProvider'
+import AuthProvider from './(root)/context/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 

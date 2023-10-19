@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getServerSession } from 'next-auth';
 import UserCard from "@/components/UserCard";
 import { useSession } from 'next-auth/react';
-import { options } from '../api/auth/[...nextauth]/options';
+import { options } from '../../(auth)/api/auth/[...nextauth]/options';
 import { redirect } from 'next/navigation';
 
 export default function AccountPage() {

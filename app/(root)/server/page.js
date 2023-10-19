@@ -1,4 +1,4 @@
-import { options } from "../api/auth/[...nextauth]/options";
+import { options } from "../../(auth)/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 import UserCard from "@/components/UserCard";
 

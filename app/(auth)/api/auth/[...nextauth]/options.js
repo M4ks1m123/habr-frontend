@@ -33,5 +33,9 @@ export const options = {
 
             },
         })
-    ]
+    ],
+    pages:{
+        //signIn: '/auth/signin',
+        //signOut: '/auth/signout',
+    }
 }
