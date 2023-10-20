@@ -1,5 +1,5 @@
 'use client'
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { getServerSession } from 'next-auth';
 import UserCard from "@/components/UserCard";
 import { useSession } from 'next-auth/react';

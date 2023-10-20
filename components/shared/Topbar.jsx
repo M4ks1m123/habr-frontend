@@ -1,16 +1,19 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
-import "bootstrap";
+//import "bootstrap";
+//import 'tailwindcss/defaultConfig'
 import Image from "next/image";
 import Link from "next/link";
+import { Input } from "postcss";
 
 let sessionStatus = true;
 function Topbar() {
   const session = useSession();
   if (session.status == "authenticated") {
     sessionStatus = true;
-  } else {
+  } 
+  else {
     sessionStatus = false;
   }
 
@@ -29,94 +32,46 @@ function Topbar() {
   */
   return (
     <div>
-      {sessionStatus ? <h1>authenticated</h1> : <h1>unauthenticated</h1>}
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider"></hr>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">
-                  Disabled
-                </a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              ></input>
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-
-            {sessionStatus ? (
-              <a href="/account">
-                <Image src="/assets/profile.svg" width={40} height={40}/>
-              </a>
-            ) : (
-              <Link href="/api/auth/signin">Sign in?</Link>
-            )}
-          </div>
-        </div>
-      </nav>
+      {sessionStatus ? (
+        <h1>authenticated</h1>
+      ) : (
+        <h1 className="center">unauthenticated</h1>
+      )}
+      <div className="max-w-screen-lg mx-auto">
+        <ul className="flex" >
+          <li className="flex-1 border-solid border-2 border-indigo-600">
+            <Link href="/">Dashboard</Link>
+          </li>
+          <li className="flex-1 border-solid border-2 border-indigo-600">
+            <Link href="/">Posts</Link>
+          </li>
+          <li className="flex-1 border-solid border-2 border-indigo-600">
+            <Link href="/">Bookmarks</Link>
+          </li>
+          <li className="flex-1 border-solid border-2 border-indigo-600">
+          </li>
+          {sessionStatus ? (
+            <Link href="/account">
+              <Image src="/assets/profile.svg" width={40} height={40} />
+            </Link>
+          ) : (
+            <Link href="/api/auth/signin">Sign in?</Link>
+          )}
+        </ul>
+      </div>
+      <div className="max-w-screen-lg mx-auto">
+        <ul className="flex" >
+          <li className="flex-1 border-solid border-2 text-center border-indigo-600">
+            <a>Link</a>
+          </li>
+          <li className="flex-1 border-solid border-2 text-center border-indigo-600">
+            <a>Link</a>
+          </li>
+          <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
+            <a className="">Link</a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

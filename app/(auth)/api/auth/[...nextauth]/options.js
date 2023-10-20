@@ -2,7 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 
 export const options = {
     session: {
-        maxAge: 1*1*60*1,
+        maxAge: 1*10*60*1,
     },
     providers: [ 
         CredentialsProvider({

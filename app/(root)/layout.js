@@ -19,8 +19,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Topbar/>
-          <main>{children}</main>
+          <Topbar />
+          <main className='bg-zinc-100'>
+            <section className='max-w-screen-lg mx-auto flex min-h-screen flex-1 flex-col items-center bg-white'>
+              <div className=''>
+                {children}
+              </div>
+            </section>
+          </main>
         </AuthProvider>
       </body>
     </html>
