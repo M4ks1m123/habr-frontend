@@ -12,7 +12,7 @@ function Topbar() {
   const session = useSession();
   if (session.status == "authenticated") {
     sessionStatus = true;
-  } 
+  }
   else {
     sessionStatus = false;
   }
@@ -61,14 +61,14 @@ function Topbar() {
       </div>
       <div className="max-w-screen-lg mx-auto">
         <ul className="flex" >
-          <li className="flex-1 border-solid border-2 text-center border-indigo-600">
-            <a>Link</a>
-          </li>
-          <li className="flex-1 border-solid border-2 text-center border-indigo-600">
-            <a>Link</a>
+          <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
+            <Link href='/'>Избранное</Link>
           </li>
           <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
-            <a className="">Link</a>
+            <Link href='/'>Интересное</Link>
+          </li>
+          <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
+            <Link href='/'>Последнее</Link>
           </li>
         </ul>
       </div>

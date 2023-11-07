@@ -27,18 +27,18 @@ export default function SignIn({ csrfToken }) {
                         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             Username
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="username" type="text" onChange={(e) => (userName.current = e.target.value)} />
+                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="username" type="text" onChange={(e) => (userName.current = e.target.value)} />
                         </label>
                     </div>
-                    <div class="mb-4">
+                    <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             Password
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" onChange={(e) => (password.current = e.target.value)} />
+                            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" onChange={(e) => (password.current = e.target.value)} />
                         </label>
                     </div>
                     <div className="flex justify-between">
-                        <button class="bg-blue-500 m-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={onSubmit}>Sign in</button>
-                        <Link class="inline-block m-auto align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href='signup'>Sign up</Link>
+                        <button className="bg-blue-500 m-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={onSubmit}>Sign in</button>
+                        <Link className="inline-block m-auto align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href='signup'>Sign up</Link>
                     </div>
                 </form>
             </div>
