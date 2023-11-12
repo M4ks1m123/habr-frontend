@@ -1,4 +1,5 @@
 'use client'
+import 'app/globals.css'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import { getServerSession } from 'next-auth';
 import UserCard from "@/components/UserCard";

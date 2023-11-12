@@ -32,23 +32,25 @@ function Topbar() {
   */
   return (
     <div>
+      {/*
       {sessionStatus ? (
         <h1>authenticated</h1>
       ) : (
         <h1 className="center">unauthenticated</h1>
       )}
+      */}
       <div className="max-w-screen-lg mx-auto">
         <ul className="flex" >
-          <li className="flex-1 border-solid border-2 border-indigo-600">
-            <Link href="/">Dashboard</Link>
+          <li className="flex-1 border-solid border-2 border-cyan-500">
+            <Link href="/dashboard">Dashboard</Link>
           </li>
-          <li className="flex-1 border-solid border-2 border-indigo-600">
-            <Link href="/">Posts</Link>
+          <li className="flex-1 border-solid border-2 border-cyan-500">
+            <Link href="/posts">Posts</Link>
           </li>
-          <li className="flex-1 border-solid border-2 border-indigo-600">
+          <li className="flex-1 border-solid border-2 border-cyan-500">
             <Link href="/">Bookmarks</Link>
           </li>
-          <li className="flex-1 border-solid border-2 border-indigo-600">
+          <li className="flex-1 border-solid border-2 border-cyan-500">
           </li>
           {sessionStatus ? (
             <Link href="/account">
@@ -57,19 +59,6 @@ function Topbar() {
           ) : (
             <Link href="/api/auth/signin">Sign in?</Link>
           )}
-        </ul>
-      </div>
-      <div className="max-w-screen-lg mx-auto">
-        <ul className="flex" >
-          <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
-            <Link href='/'>Избранное</Link>
-          </li>
-          <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
-            <Link href='/'>Интересное</Link>
-          </li>
-          <li className="flex-1 border-solid border-2 text-center py-2 border-indigo-600">
-            <Link href='/'>Последнее</Link>
-          </li>
         </ul>
       </div>
     </div>

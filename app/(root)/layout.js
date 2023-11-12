@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <Topbar />
           <main className='bg-zinc-100'>
-            <section className='max-w-screen-lg mx-auto flex min-h-screen flex-1 flex-col items-center bg-white'>
+            <section className='max-w-screen-lg mx-auto flex min-h-screen flex-1 flex-col bg-white'>
               <div className=''>
                 {children}
               </div>
