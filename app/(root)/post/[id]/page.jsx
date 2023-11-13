@@ -3,6 +3,7 @@ import PostCard from "@/components/cards/PostCard";
 import { useEffect } from "react"
 import { post } from "@/constants/index.js"
 import TopbarPosts from "@/components/shared/TopbarPosts";
+import Post from "@/components/Post";
 
 export default function page({ params: { id } }) {
     /*const post = {
@@ -20,31 +21,26 @@ export default function page({ params: { id } }) {
 
     function ShowPost(msg) {
         useEffect(() => {
-          var logElem = document.querySelector(".log")
-          logElem.innerHTML = msg;
+            var logElem = document.querySelector(".log")
+            logElem.innerHTML = msg;
         });
-      }
+    }
 
     return (
 
         <div>
             <TopbarPosts />
-            <div>
-                <h1>Post</h1>
-                <PostCard
+            <div className="mt-3">
+                <Post
                     title={post.title}
                     author={post.author}
                     tags={post.tags}
+                    badges={post.badges}
+                    content={post.content}
                 />
-                <h1>{post.author}</h1>
-                <h1>{post.tags}</h1>
                 {ShowPost(post.content)}
                 <div className="log"></div>
             </div>
-
-
-            <p>{id}</p>
-            <p>{post.id}</p>
         </div>
     )
 }
