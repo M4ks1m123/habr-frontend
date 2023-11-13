@@ -12,15 +12,15 @@ export default function Page2() {
 
     return (
 
-        <div>
+        <div className="space-y-4">
             <TopbarPosts />
             {array.map((post) => (
-                <div>
-                    <h1>Post</h1>
+                <div >
                     <PostCard
                         title={post.title}
                         author={post.author}
                         tags={post.tags}
+                        badges={post.badges}
                     />
                 </div>
             ))}
