@@ -11,7 +11,8 @@ function PostCard(props) {
                     <ul>
                         <li><Link href={'/post/' + post.id}>{props.title}</Link></li>
                         <li>{props.author}</li>
-                        <li>{props.tags}</li>
+                        {props.tags.map((tag) => (
+                        <li>{tag}</li>))}
                     </ul>
                 </h2>
             </div>

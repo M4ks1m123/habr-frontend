@@ -5,7 +5,9 @@
 //import UserCard from '../../components/UserCard'
 //import Topbar from "@/components/shared/Topbar"
 import TopbarPosts from "@/components/shared/TopbarPosts"
+import { post } from "@/constants";
 import { useEffect } from "react"
+
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ClientPage() {
@@ -14,15 +16,6 @@ export default function ClientPage() {
       var logElem = document.querySelector(".log")
       logElem.innerHTML = msg;
     });
-  }
-
-  const post = {
-    id: '1',
-    title: 'postTitle',
-    likesCount: 10,
-    content: '<div><ul><li>Item<li><li>Item<li><li>Item<li></ul> </div>',
-    author: 'authorName',
-    tags: ('tag1, tag2, tag3'),
   }
 
   //const result = await fetchPosts();

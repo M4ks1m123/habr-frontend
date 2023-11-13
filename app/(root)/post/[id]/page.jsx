@@ -1,5 +1,8 @@
+'use client'
 import PostCard from "@/components/cards/PostCard";
+import { useEffect } from "react"
 import { post } from "@/constants/index.js"
+import TopbarPosts from "@/components/shared/TopbarPosts";
 
 export default function page({ params: { id } }) {
     /*const post = {
@@ -12,48 +15,33 @@ export default function page({ params: { id } }) {
     }
     */
     //const Title = post.title;
-    function call() {
-        for (let i = 0; i < 10; i++) {
-            return (
-                <div>
-                    <h1>Post</h1>
-                    <PostCard
-                        title={post.title}
-                        author={post.author}
-                        tags={post.tags}
-                    />
-                    <p>{id}</p>
-                    <p>{post.id}</p>
-                </div>
-            )
-        }
-    }
 
-    const test = 2;
     const array = [post, post, post];
 
-    call();
+    function ShowPost(msg) {
+        useEffect(() => {
+          var logElem = document.querySelector(".log")
+          logElem.innerHTML = msg;
+        });
+      }
 
     return (
 
         <div>
-            {test == 1 ? (
-                <>
-                    <p>it works</p>
-                </>
-            ) :
-                <p>it still works</p>}
+            <TopbarPosts />
+            <div>
+                <h1>Post</h1>
+                <PostCard
+                    title={post.title}
+                    author={post.author}
+                    tags={post.tags}
+                />
+                <h1>{post.author}</h1>
+                <h1>{post.tags}</h1>
+                {ShowPost(post.content)}
+                <div className="log"></div>
+            </div>
 
-            {array.map((post) => (
-                <div>
-                    <h1>Post</h1>
-                    <PostCard
-                        title={post.title}
-                        author={post.author}
-                        tags={post.tags}
-                    />
-                </div>
-            ))}
 
             <p>{id}</p>
             <p>{post.id}</p>

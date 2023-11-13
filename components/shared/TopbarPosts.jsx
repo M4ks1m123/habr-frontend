@@ -35,13 +35,13 @@ function TopbarPosts() {
       <div className="max-w-screen-lg mx-auto">
         <ul className="flex" >
           <li className="flex-1 border-solid border-2 text-center py-2 border-cyan-500">
-            <Link href='/posts'>Избранное</Link>
+            <Link href='/favourites'>Избранное</Link>
           </li>
           <li className="flex-1 border-solid border-2 text-center py-2 border-cyan-500">
-            <Link href='/post2'>Интересное</Link>
+            <Link href='/featured'>Интересное</Link>
           </li>
           <li className="flex-1 border-solid border-2 text-center py-2 border-cyan-500">
-            <Link href='/post/5'>Последнее</Link>
+            <Link href='/latest'>Последнее</Link>
           </li>
         </ul>
       </div>
