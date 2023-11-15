@@ -1,12 +1,11 @@
 import AuthorCard from "@/components/cards/AuthorCard";
 import HubCard from "@/components/cards/HubCard";
 import TopbarPosts from "@/components/shared/TopbarPosts";
-import { author, hub, post } from "@/constants";
+import { author, hub } from "@/constants";
 
 
 export default function Page() {
 
-    const array = [post, post, post];
     const hubList = [hub, hub, hub];
     const authorList = [author, author, author];
     return (

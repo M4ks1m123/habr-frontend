@@ -1,5 +1,3 @@
-import TopbarPosts from "@/components/shared/TopbarPosts"
-
 export default function Page() {
     return (
 

@@ -1,11 +1,7 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
-//import "bootstrap";
-//import 'tailwindcss/defaultConfig'
-import Image from "next/image";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { Input } from "postcss";
 
 let sessionStatus = true;
 function TopbarPosts() {

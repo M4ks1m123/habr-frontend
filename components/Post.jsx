@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { post } from '@/constants/index';
 import { useEffect } from "react";
 
 export default function Post(props) {

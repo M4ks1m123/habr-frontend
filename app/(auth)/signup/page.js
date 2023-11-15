@@ -1,7 +1,7 @@
 'use client'
 
 import "app/globals.css"
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export default function signup() {
     const [name, setName] = useState('');
@@ -52,7 +52,7 @@ export default function signup() {
                         </label>
                     </div>
                     <div className="flex justify-center">
-                    <button className="bg-blue-500 m-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign up</button>
+                        <button className="bg-blue-500 m-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign up</button>
                     </div>
                 </form>
             </div>
