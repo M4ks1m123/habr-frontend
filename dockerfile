@@ -1,9 +1,15 @@
-# syntax=docker/dockerfile:1
-
 FROM node:18-alpine
+
 WORKDIR /app
+
+COPY package.json ./
+
+RUN npm install
+
 COPY . .
-RUN npm install --production
+
 RUN npm run build
 
-CMD ["npm", "start"]
+COPY .next ./.next
+
+CMD ["npm", "run", "dev"]
