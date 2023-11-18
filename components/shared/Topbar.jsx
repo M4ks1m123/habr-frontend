@@ -77,7 +77,7 @@ function Topbar() {
                   <Image src="/assets/White-Profile.svg" width={50} height={50} />
                 </Link>
               ) : (
-                <Link href="/api/auth/signin">Sign in?</Link>
+                <Link className="text-white text-lg font-medium hover:text-slate-100" href="/api/auth/signin">Sign in?</Link>
               )}
             </li>
           </div>
