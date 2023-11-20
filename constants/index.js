@@ -1,7 +1,7 @@
 export const post = {
   id: '1',
   title: 'postTitle',
-  titleImg:'/public/assets/profile.svg',
+  titleImg: '/public/assets/profile.svg',
   likesCount: 10,
   content: '<div><ul><li>Item<li><li>Item<li><li>Item<li></ul></div>',
   author: 'authorName',
