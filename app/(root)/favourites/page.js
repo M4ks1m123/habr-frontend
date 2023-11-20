@@ -33,8 +33,8 @@ export default function Page() {
             <div className="">
                 <h1 className="mx-10 mt-7 text-2xl font-bold">Любимые хабы</h1>
                 <div className="flex items-center mx-3">
-                    <button className="text-7xl block" onClick={hubsSlideLeft}>&#8249;</button>
-                    <div className="flex space-x-4 mx-1 overflow-x-hidden snap-x scroll-smooth" id="hubs-slider">
+                    <button className="text-7xl hidden sm:block" onClick={hubsSlideLeft}>&#8249;</button>
+                    <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="hubs-slider">
                         {hubList.map((hub) => (
                             <div className="snap-start">
                                 <HubCard className=""
@@ -44,12 +44,12 @@ export default function Page() {
                             </div>
                         ))}
                     </div>
-                    <button className="text-7xl" onClick={hubsSlideRight}>&#8250;</button>
+                    <button className="text-7xl hidden sm:block" onClick={hubsSlideRight}>&#8250;</button>
                 </div>
                 <h1 className="mx-10 mt-7 text-2xl font-bold">Любимые авторы</h1>
                 <div className="flex items-center mx-3">
-                    <button className="text-7xl block" onClick={authorsSlideLeft}>&#8249;</button>
-                    <div className="flex space-x-4 mx-1 overflow-x-hidden snap-x scroll-smooth" id="authors-slider">
+                    <button className="text-7xl hidden sm:block" onClick={authorsSlideLeft}>&#8249;</button>
+                    <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="authors-slider">
                         {authorList.map((author) => (
                             <div className="snap-start">
                                 <AuthorCard
@@ -59,7 +59,7 @@ export default function Page() {
                             </div>
                         ))}
                     </div>
-                    <button className="text-7xl" onClick={authorsSlideRight}>&#8250;</button>
+                    <button className="text-7xl hidden sm:block" onClick={authorsSlideRight}>&#8250;</button>
                 </div>
             </div>
         </div>
