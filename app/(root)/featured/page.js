@@ -14,14 +14,10 @@ export default function Page2() {
 
         <div>
             <TopbarPosts />
-            <div className="mx-3">
+            <div className="mx-5 space-y-2">
                 {array.map((post) => (
-                    <div>
-                        <h1>Post</h1>
-                        <PostCard
-                            title={post.title}
-                            author={post.author}
-                            tags={post.tags}
+                    <div className="space-y-2">
+                        <PostCard post={post}
                         />
                     </div>
                 ))}

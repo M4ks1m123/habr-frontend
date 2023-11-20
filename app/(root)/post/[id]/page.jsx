@@ -31,10 +31,7 @@ export default function page({ params: { id } }) {
             <TopbarPosts />
             <div>
                 <h1>Post</h1>
-                <PostCard
-                    title={post.title}
-                    author={post.author}
-                    tags={post.tags}
+                <PostCard post={post}
                 />
                 <h1>{post.author}</h1>
                 <h1>{post.tags}</h1>
