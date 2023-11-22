@@ -6,7 +6,9 @@ import { author, hub, post } from "@/constants";
 
 
 export default function Page() {
-
+    //user id -> posts -> badges
+    //user id -> posts -> authors
+    
     const array = [post, post, post];
     const hubList = [hub, hub, hub, hub, hub, hub, hub, hub, hub, hub, hub, hub];
     const authorList = [author, author, author,author, author, author, author, author,author, author];

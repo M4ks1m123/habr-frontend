@@ -20,6 +20,8 @@ export default function ClientPage() {
 
   //const result = await fetchPosts();
 
+  //show visited lately posts
+
   return (
     <div>
       <section className="">

@@ -9,6 +9,8 @@ import { redirect } from 'next/navigation';
 
 export default function AccountPage() {
 
+    //user id -> user
+
     const {data: session} = useSession({
         required: true,
         onUnauthenticated(){
