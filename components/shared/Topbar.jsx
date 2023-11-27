@@ -14,7 +14,7 @@ const imageStyle = {
   borderRadius: '50%',
   border: '1px solid #fff',
 }
-function Topbar() {
+export default function Topbar() {
   const session = useSession();
   if (session.status == "authenticated") {
     sessionStatus = true;
@@ -62,7 +62,7 @@ function Topbar() {
               <Link className="text-white text-lg font-medium hover:text-slate-100" href="/featured">Posts</Link>
             </li>
             <li className=" border-solid border-2 border-cyan-500">
-              <Link className="text-white text-lg font-medium hover:text-slate-100" href="/">Bookmarks</Link>
+              <Link className="text-white text-lg font-medium hover:text-slate-100" href="/bookmarks">Bookmarks</Link>
             </li>
           </div>
           <div className="flex justify-end me-4 items-center">
@@ -73,7 +73,7 @@ function Topbar() {
             </li>
             <li>
               {sessionStatus ? (
-                <Link href="/account">
+                <Link href="/dashboard">
                   <Image src="/assets/White-Profile.svg" width={50} height={50} />
                 </Link>
               ) : (
@@ -87,5 +87,3 @@ function Topbar() {
 
   );
 }
-
-export default Topbar;

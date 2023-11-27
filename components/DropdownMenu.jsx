@@ -25,7 +25,7 @@ export default function DropdownMenu() {
                             <Link onClick={() => setNavbar(!navbar)} className="text-white text-lg font-medium hover:text-slate-100" href="/featured">Posts</Link>
                         </li>
                         <li className=" border-solid border-2 border-cyan-500 py-3 ps-3 pe-10">
-                            <Link onClick={() => setNavbar(!navbar)} className="text-white text-lg font-medium hover:text-slate-100" href="/">Bookmarks</Link>
+                            <Link onClick={() => setNavbar(!navbar)} className="text-white text-lg font-medium hover:text-slate-100" href="/bookmarks">Bookmarks</Link>
                         </li>
                     </ul>
                 </div>
