@@ -33,9 +33,8 @@ export default function Page2() {
     return (
         <div>
             <TopbarPosts />
-
             <div className="mx-5 space-y-2">
-                {posts?.products?.map((post) => (
+                {posts?.products.map((post) => (
                     <div className="space-y-2">
                         {post?.title}
                     </div>

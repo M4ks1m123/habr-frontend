@@ -21,3 +21,9 @@ export const author = {
   authorName: 'authorName',
   authorUsername: 'authorUsername'
 }
+
+export const folder = {
+  id: '1',
+  title: 'folderName',
+  creationDate: 'folderCreationDate'
+}
