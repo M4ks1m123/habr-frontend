@@ -4,7 +4,7 @@ import HubCard from "@/components/cards/HubCard";
 import PostCard from "@/components/cards/PostCard";
 import PostCardBookmarks from "@/components/cards/PostCardBookmarks";
 import { folder, hub, post } from "@/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function page() {
     const array = [post, post, post, post, post, post, post, post, post, post, post, post, post];
@@ -29,6 +29,23 @@ export default function page() {
     const newFunc3 = msg => {
         setCurrent(msg);
     }
+
+    const selectFolder = () => {
+        msg => {
+            setCurrent(msg);
+            setFolder(0)
+        }
+    }
+
+    const [postsFolder, setPost] = useState(null);
+
+    {useEffect(() => {
+        fetch('http://dummyjson.com/products')
+            .then((res) => res.json())
+            .then((post_data) => {
+                setPost(post_data)
+            });
+    }, [folderIsOpen])}
 
     return (
         <div>
@@ -68,16 +85,16 @@ export default function page() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
                     <path fillRule="evenodd" d="M2.625 6.75a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875 0A.75.75 0 018.25 6h12a.75.75 0 010 1.5h-12a.75.75 0 01-.75-.75zM2.625 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zM7.5 12a.75.75 0 01.75-.75h12a.75.75 0 010 1.5h-12A.75.75 0 017.5 12zm-4.875 5.25a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875 0a.75.75 0 01.75-.75h12a.75.75 0 010 1.5h-12a.75.75 0 01-.75-.75z" clipRule="evenodd" />
                 </svg>
-                <h1 className="">Закладки {currentFolder}</h1>
+                <h1 className="">Закладки {currentFolder.title}</h1>
+                <button onClick={() => { setCurrent(''); setFolder(!folderIsOpen) }} className="text-7xl">&#8249;</button>
             </div>
-            <button onClick={() => setFolder(!folderIsOpen)}>Click</button>
             {folderIsOpen ? (
                 <div>
                     <div className="mx-10">
                         <div className="space-y-2">
                             {folders.map((folder) => (
                                 <div className="space-y-2">
-                                    <FolderCard folder={folder} state={11} newtitle={'testtt'} stateFunc={() => setCurrent(2)} stateFunc2={newFunc3}
+                                    <FolderCard folder={folder} stateFunc={folder1 => { setCurrent(folder1); setFolder(!folderIsOpen) }} stateFunc2={newFunc3}
                                     />
                                 </div>
                             ))}
@@ -86,7 +103,16 @@ export default function page() {
                 </div>
 
             ) : (
-                <h1></h1>
+                <div className="mx-3">
+
+                    <div className="mx-5 space-y-2">
+                        {postsFolder?.products.map((post) => (
+                            <div className="space-y-2">
+                                {post?.title}
+                            </div>
+                        ))}
+                    </div>
+                </div>
             )}
         </div>
     )

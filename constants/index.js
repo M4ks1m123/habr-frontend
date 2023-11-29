@@ -25,5 +25,11 @@ export const author = {
 export const folder = {
   id: '1',
   title: 'folderName',
-  creationDate: 'folderCreationDate'
+  creationDate: 'folderCreationDate',
+  postsId: [1, 2, 3, 4, 5],
+}
+
+export const user = {
+  id: '1',
+  foldersId: [1, 2, 3, 4]
 }
