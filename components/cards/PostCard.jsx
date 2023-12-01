@@ -4,7 +4,7 @@ import { post } from '@/constants/index';
 import Image from "next/image";
 import { useState } from "react";
 
-function PostCard(props) {
+function PostCard({post}) {
     const [isLiked, setLiked] = useState(false);
 
 
@@ -14,17 +14,17 @@ function PostCard(props) {
                 <ul className="space-y-2">
                     <div className="flex items-end space-x-1">
                         <li>
-                            <Link href={'/account/' + props.post.authorId}>
+                            <Link href={'/account/' + post?.authorId}>
                                 <Image src="/assets/profile.svg" width={30} height={30}></Image>
                             </Link>
                         </li>
-                        <li>{props.post.author}</li>
+                        <li>{post?.username}</li>
                     </div>
-                    <li className="text-center sm:text-left"><Link className='text-2xl' href={'/post/' + props.post.id}>{props.post.title}</Link></li>
+                    <li className="text-center sm:text-left"><Link className='text-2xl' href={'/post/' + post?.id}>{post?.title}</Link></li>
 
                     <div className="flex space-x-1">
-                        {props.post.badges.map((badge) => (
-                            <li className="px-1 border rounded-lg border-slate-400">{badge}</li>))}
+                        {/*props.post.badges.map((badge) => (
+                            <li className="px-1 border rounded-lg border-slate-400">{badge}</li>))*/}
                     </div>
                     <div className="flex justify-end">
                         <button onClick={() => setLiked(!isLiked)}>

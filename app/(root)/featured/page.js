@@ -10,7 +10,7 @@ export default function Page2() {
     //posts
     //post id -> tags
 
-
+    //
     //const array = [post, post, post];
     let array = [];
     for (let i = 0; i < 10; i++) {
@@ -20,7 +20,7 @@ export default function Page2() {
     const [posts, setPost] = useState(null);
 
     useEffect(() => {
-        fetch('http://dummyjson.com/products')
+        fetch('http://localhost:5000/posts')
             .then((res) => res.json())
             .then((post_data) => {
                 setPost(post_data)
@@ -34,9 +34,10 @@ export default function Page2() {
         <div>
             <TopbarPosts />
             <div className="mx-5 space-y-2">
-                {posts?.products.map((post) => (
+                {posts?.map((post) => (
                     <div className="space-y-2">
-                        {post?.title}
+                        <PostCard post={post}/>
+                        {post.title}
                     </div>
                 ))}
             </div>
