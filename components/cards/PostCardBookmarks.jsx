@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function PostCardBookmarks(props) {
+export default function PostCardBookmarks(post) {
   const [isLiked, setLiked] = useState(false);
   return (
     <arcticle className="snap-start m-2">
@@ -11,11 +11,11 @@ export default function PostCardBookmarks(props) {
           <div className="flex justify-between space-x-1 pt-2 px-2">
             <div className="flex">
               <li className="flex">
-                <Link href={"/account/" + props.post.authorId}>
+                <Link href={"/account/" + post.authorId}>
                   <Image src="/assets/profile.svg" width={30} height={30}></Image>
                 </Link>
               </li>
-              <li>{props.post.author}</li>
+              <li>{post.author}</li>
             </div>
             <div>
               <div className="">
@@ -54,8 +54,8 @@ export default function PostCardBookmarks(props) {
             </div>
           </div>
           <li className="text-center">
-            <Link className="text-2xl" href={"/post/" + props.post.id}>
-              {props.post.title}
+            <Link className="text-2xl" href={"/post/" + post.id}>
+              {post.title}
             </Link>
           </li>
 

@@ -1,7 +1,7 @@
 "use client";
 
 
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 //import "bootstrap";
 //import 'tailwindcss/defaultConfig'
 import Image from "next/image";
@@ -15,6 +15,7 @@ const imageStyle = {
   border: '1px solid #fff',
 }
 export default function Topbar() {
+  /*
   const session = useSession();
   if (session.status == "authenticated") {
     sessionStatus = true;
@@ -24,6 +25,10 @@ export default function Topbar() {
   }
 
   console.log(session);
+  */
+
+  const { data: session } = useSession();
+  console.log({ session });
   /*
   if (session.status =="unauthenticated"){
     return(
@@ -38,7 +43,7 @@ export default function Topbar() {
   */
   return (
     <div className="bg-cyan-500">
-        <DropdownMenu />
+      <DropdownMenu />
       {/*
       {sessionStatus ? (
         <h1>authenticated</h1>
@@ -72,12 +77,16 @@ export default function Topbar() {
               </Link>
             </li>
             <li>
-              {sessionStatus ? (
+              {session?.user ? (
                 <Link href="/dashboard">
                   <Image src="/assets/White-Profile.svg" width={50} height={50} />
+                  <h1>{session.user.name}</h1>
                 </Link>
               ) : (
-                <Link className="text-white text-lg font-medium hover:text-slate-100" href="/api/auth/signin">Sign in?</Link>
+                <div>
+                  <Link className="text-white text-lg font-medium hover:text-slate-100" href="/api/auth/signin">Sign in?</Link>
+                  <button className="text-green-600" onClick={() => signIn()}>SignIN?</button>
+                </div>
               )}
             </li>
           </div>

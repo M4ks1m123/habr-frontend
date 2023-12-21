@@ -1,8 +1,8 @@
-import '../globals.css'
+import './globals.css'
 import { Inter } from 'next/font/google'
 
 import Topbar from '@/components/shared/Topbar'
-import AuthProvider from './context/AuthProvider'
+import Provider from './Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
+        <Provider>
           <Topbar />
           <main className='bg-zinc-100'>
             <section className='max-w-screen-lg mx-auto flex min-h-screen flex-1 flex-col bg-white'>
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
               </div>
             </section>
           </main>
-        </AuthProvider>
+        </Provider>
       </body>
     </html>
   )

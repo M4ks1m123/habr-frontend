@@ -1,9 +1,5 @@
 'use client'
-import { useSession } from "next-auth/react"
-import AuthProvider from "./context/AuthProvider"
-import { redirect } from "next/dist/server/api-utils"
-import UserCard from '../../components/UserCard'
-import Topbar from "@/components/shared/Topbar"
+import { signIn, useSession } from "next-auth/react"
 import { useEffect } from "react"
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,8 +17,8 @@ export default function ClientPage() {
     <section className="">
       {log('<div><ul><li>Item<li><li>Item<li><li>Item<li></ul> </div>')}
       <div className="log" >
-
       </div >
+      <button className="text-green-600" onClick={() => signIn()}>SignIN?</button>
     </section >
   )
 }

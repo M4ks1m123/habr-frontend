@@ -3,15 +3,52 @@ import AuthorCard from "@/components/cards/AuthorCard";
 import HubCard from "@/components/cards/HubCard";
 import TopbarPosts from "@/components/shared/TopbarPosts";
 import { author, hub, post } from "@/constants";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 
 export default function Page() {
     //user id -> posts -> badges
     //user id -> posts -> authors
-    
+
     const array = [post, post, post];
     const hubList = [hub, hub, hub, hub, hub, hub, hub, hub, hub, hub, hub, hub];
-    const authorList = [author, author, author,author, author, author, author, author,author, author];
+    const authorList = [author, author, author, author, author, author, author, author, author, author];
+
+    const [posts, setPost] = useState(null);
+    const [authors, setAuthors] = useState(null);
+    const { data: session } = useSession();
+
+    const fetchUser = async () => {
+        const res = await fetch("http://localhost:8080/user/favHubs", {
+            method: "GET",
+            headers: {
+                authorization: 'Bearer ' + session?.user.token,
+                "Content-Type": "application/json",
+            },
+        });
+
+        const response = await res.json();
+        console.log(response);
+        setPost(response);
+    }
+
+    const fetchAuthors = async () => {
+        const res = await fetch("http://localhost:8080/user/favAuthors", {
+            method: "GET",
+            headers: {
+                authorization: 'Bearer ' + session?.user.token,
+                "Content-Type": "application/json",
+            },
+        });
+
+        const response = await res.json();
+        console.log(response);
+        setAuthors(response);
+    }
+
+    useEffect(() => { fetchUser() }, [])
+    useEffect(() => { fetchAuthors() }, [])
 
     const hubsSlideLeft = () => {
         var slider = document.getElementById('hubs-slider')
@@ -37,10 +74,10 @@ export default function Page() {
                 <div className="flex items-center mx-3">
                     <button className="text-7xl hidden sm:block" onClick={hubsSlideLeft}>&#8249;</button>
                     <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="hubs-slider">
-                        {hubList.map((hub) => (
+                        {posts?.map((hub) => (
                             <div className="snap-start">
                                 <HubCard className=""
-                                    title={hub.title}
+                                    title={hub}
                                     desc={hub.desc}
                                 />
                             </div>
@@ -52,10 +89,10 @@ export default function Page() {
                 <div className="flex items-center mx-3">
                     <button className="text-7xl hidden sm:block" onClick={authorsSlideLeft}>&#8249;</button>
                     <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="authors-slider">
-                        {authorList.map((author) => (
+                        {authors?.map((author) => (
                             <div className="snap-start">
                                 <AuthorCard
-                                    name={author.authorName}
+                                    name={author}
                                     authorUsername={author.authorUsername}
                                 />
                             </div>
