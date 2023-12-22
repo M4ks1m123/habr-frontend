@@ -24,6 +24,7 @@ export default function Page() {
             method: "GET",
             headers: {
                 authorization: 'Bearer ' + session?.user.token,
+                //authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVc2VSIiwiaWF0IjoxNzAzMjQ3MDEyLCJleHAiOjE3MDMzMzM0MTJ9.Esm197sUaTmUhdTXVKU-_LpXCvbuOp3N_ZMV_QC7h227Fi5U2oTSRdt7vyO3287CHq9oHJqaKXYbrDYmnFJ9BQ",
                 "Content-Type": "application/json",
             },
         });
@@ -38,6 +39,7 @@ export default function Page() {
             method: "GET",
             headers: {
                 authorization: 'Bearer ' + session?.user.token,
+                //authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVc2VSIiwiaWF0IjoxNzAzMjQ3MDEyLCJleHAiOjE3MDMzMzM0MTJ9.Esm197sUaTmUhdTXVKU-_LpXCvbuOp3N_ZMV_QC7h227Fi5U2oTSRdt7vyO3287CHq9oHJqaKXYbrDYmnFJ9BQ",
                 "Content-Type": "application/json",
             },
         });

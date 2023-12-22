@@ -84,8 +84,7 @@ export default function Topbar() {
                 </Link>
               ) : (
                 <div>
-                  <Link className="text-white text-lg font-medium hover:text-slate-100" href="/api/auth/signin">Sign in?</Link>
-                  <button className="text-green-600" onClick={() => signIn()}>SignIN?</button>
+                  <button className="text-white text-lg font-medium hover:text-slate-100" onClick={() => signIn()}>Sign in?</button>
                 </div>
               )}
             </li>

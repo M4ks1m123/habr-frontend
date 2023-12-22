@@ -54,7 +54,7 @@ export default function Page2() {
         setPost(response);
     }
 
-    useEffect(() => {fetchUser()}, [])
+    useEffect(() => { fetchUser() }, [])
 
 
 

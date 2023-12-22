@@ -41,8 +41,7 @@ export default function Page() {
 
   return (
     <section className="">
-      <h1>Статистика</h1>
-      <h1> </h1>
+      <h1 className="mx-10 mt-7 text-2xl font-bold">Статистика</h1>
       <button onClick={fetchUser}>FEEETCH</button>
       <h1>
         {/*posts?.map((post, i) => (
@@ -51,8 +50,8 @@ export default function Page() {
             {is}
           </div>
         ))*/
-        
-        posts && JSON.stringify(posts)}
+
+          posts && JSON.stringify(posts)}
       </h1>
     </section>
   )

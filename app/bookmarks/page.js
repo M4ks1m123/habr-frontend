@@ -4,6 +4,8 @@ import HubCard from "@/components/cards/HubCard";
 import PostCard from "@/components/cards/PostCard";
 import PostCardBookmarks from "@/components/cards/PostCardBookmarks";
 import { folder, hub, post } from "@/constants";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function page() {
@@ -47,6 +49,45 @@ export default function page() {
             });
     }, [folderIsOpen])}
 
+    const [bookmarkedPosts, setBookmarkedPosts] = useState(null);
+    const [readlaterPosts, setReadlaterPosts] = useState(null);
+
+    const { data: session } = useSession();
+    console.log("!!!!", session?.user.token);
+    console.log("Bearer " + session?.user.token);
+
+
+    const fetchUser = async () => {
+        const res = await fetch("http://localhost:8080/api/bookmark/1", {
+            method: "GET",
+            headers: {
+                authorization: 'Bearer ' + session?.user.token,
+                "Content-Type": "application/json",
+            },
+        });
+
+        const response = await res.json();
+        console.log(response);
+        setBookmarkedPosts(response);
+    }
+
+    const fetchReadlater = async () => {
+        const res = await fetch("http://localhost:8080/api/readlater/1", {
+            method: "GET",
+            headers: {
+                authorization: 'Bearer ' + session?.user.token,
+                "Content-Type": "application/json",
+            },
+        });
+
+        const response = await res.json();
+        console.log(response);
+        setReadlaterPosts(response);
+    }
+
+    useEffect(() => {fetchUser()}, [])
+    useEffect(() => {fetchReadlater()}, [])
+
     return (
         <div>
             <h1>Bookmarks</h1>
@@ -56,7 +97,7 @@ export default function page() {
                     <div className="flex items-center mx-3">
                         <button className="text-7xl hidden sm:block" onClick={hubsSlideLeft}>&#8249;</button>
                         <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="hubs-slider">
-                            {array.map((post) => (
+                            {readlaterPosts?.map((post) => (
                                 <div className="snap-start">
                                     <PostCardBookmarks className="" post={post}
                                     />
@@ -105,10 +146,10 @@ export default function page() {
             ) : (
                 <div className="mx-3">
 
-                    <div className="mx-5 space-y-2">
-                        {postsFolder?.products.map((post) => (
-                            <div className="space-y-2">
-                                {post?.title}
+                    <div className="mx-5 space-y-5">
+                        {bookmarkedPosts?.map((post) => (
+                            <div className="space-y-2 mx-3">
+                                <Link href={'/post/' + post.articleId}>{post?.articleName}</Link>
                             </div>
                         ))}
                     </div>
