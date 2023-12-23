@@ -15,50 +15,30 @@ export default function page() {
     const folders = [folder, folder, folder, folder, folder, folder, folder];
 
     const [folderIsOpen, setFolder] = useState(true);
+    const [currentFolder, setCurrent] = useState('0');
+    const [postsFolder, setPost] = useState(null);
+    const [bookmarkedPosts, setBookmarkedPosts] = useState(null);
+    const [readlaterPosts, setReadlaterPosts] = useState(null);
+
+    const { data: session } = useSession();
 
 
     const hubsSlideLeft = () => {
         var slider = document.getElementById('hubs-slider')
         slider.scrollLeft = slider.scrollLeft - 300
     }
+
     const hubsSlideRight = () => {
         var slider = document.getElementById('hubs-slider')
         slider.scrollLeft = slider.scrollLeft + 300
     }
 
-    const [currentFolder, setCurrent] = useState('0');
-
     const newFunc3 = msg => {
         setCurrent(msg);
     }
 
-    const selectFolder = () => {
-        msg => {
-            setCurrent(msg);
-            setFolder(0)
-        }
-    }
-
-    const [postsFolder, setPost] = useState(null);
-
-    {useEffect(() => {
-        fetch('http://dummyjson.com/products')
-            .then((res) => res.json())
-            .then((post_data) => {
-                setPost(post_data)
-            });
-    }, [folderIsOpen])}
-
-    const [bookmarkedPosts, setBookmarkedPosts] = useState(null);
-    const [readlaterPosts, setReadlaterPosts] = useState(null);
-
-    const { data: session } = useSession();
-    console.log("!!!!", session?.user.token);
-    console.log("Bearer " + session?.user.token);
-
-
-    const fetchUser = async () => {
-        const res = await fetch("http://localhost:8080/api/bookmark/1", {
+    const fetchBookmarkedPosts = async () => {
+        const res = await fetch("http://localhost:8080/api/bookmark/"+session?.user.id, {
             method: "GET",
             headers: {
                 authorization: 'Bearer ' + session?.user.token,
@@ -72,7 +52,7 @@ export default function page() {
     }
 
     const fetchReadlater = async () => {
-        const res = await fetch("http://localhost:8080/api/readlater/1", {
+        const res = await fetch("http://localhost:8080/api/readlater/"+session?.user.id, {
             method: "GET",
             headers: {
                 authorization: 'Bearer ' + session?.user.token,
@@ -85,12 +65,11 @@ export default function page() {
         setReadlaterPosts(response);
     }
 
-    useEffect(() => {fetchUser()}, [])
+    useEffect(() => {fetchBookmarkedPosts()}, [])
     useEffect(() => {fetchReadlater()}, [])
 
     return (
         <div>
-            <h1>Bookmarks</h1>
             <div>
                 <div className="">
                     <h1 className="mx-10 mt-7 text-2xl font-bold">Читать позже</h1>
@@ -106,17 +85,6 @@ export default function page() {
                         </div>
                         <button className="text-7xl hidden sm:block" onClick={hubsSlideRight}>&#8250;</button>
                     </div>
-                </div>
-            </div>
-            <h1 className="mx-10 mt-7 text-2xl font-bold">Закреп</h1>
-            <div className="mx-3">
-                <div className="mx-5 space-y-2">
-                    {array1.map((post) => (
-                        <div className="space-y-2">
-                            <PostCard post={post}
-                            />
-                        </div>
-                    ))}
                 </div>
             </div>
             <div className="flex jutify-start mx-10 mt-7 space-x-3 pb-4 items-center">

@@ -1,13 +1,5 @@
-import { useState } from "react";
 
-
-export default function FolderCard({folder, stateFunc, stateFunc2, cur}) {
-    const message = '3333';
-    const message2='222';
-    const handler = (msg) => {
-        stateFunc2(msg)
-    }
-
+export default function FolderCard({ folder, stateFunc }) {
     return (
         <div onClick={() => stateFunc(folder)} className="flex w-full justify-normal ">
             <div className="py-3 pe-3">
@@ -17,12 +9,9 @@ export default function FolderCard({folder, stateFunc, stateFunc2, cur}) {
             </div>
             <div className="flex w-full justify-between items-center border-b-2 py-3">
                 <div>
-                    <h1>{folder.title}FolderName</h1>
-                    <h1 className="text-sm text-slate-500">{folder.creationDate}FolderCreationDate</h1>
+                    <h1>{folder.title}</h1>
+                    <h1 className="text-sm text-slate-500">{folder.creationDate}</h1>
                 </div>
-                <h1 className="pe-3">Эл-ов: {Object.keys(folder.postsId).length}</h1>
-                <button onClick={() => stateFunc(folder)}>KLICK</button>
-                <button onClick={() => stateFunc2(folder.title)}>KLICK2</button>
             </div>
         </div>
     )

@@ -24,7 +24,7 @@ export const author = {
 
 export const folder = {
   id: '1',
-  title: 'folderName',
+  title: 'Папка с закладками',
   creationDate: 'folderCreationDate',
   postsId: [1, 2, 3, 4, 5],
 }

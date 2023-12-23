@@ -15,42 +15,9 @@ export default function Page() {
     const hubList = [hub, hub, hub, hub, hub, hub, hub, hub, hub, hub, hub, hub];
     const authorList = [author, author, author, author, author, author, author, author, author, author];
 
-    const [posts, setPost] = useState(null);
-    const [authors, setAuthors] = useState(null);
+    const [favouriteHubs, setFavouriteHubs] = useState(null);
+    const [favouriteAuthors, setFavouriteAuthors] = useState(null);
     const { data: session } = useSession();
-
-    const fetchUser = async () => {
-        const res = await fetch("http://localhost:8080/user/favHubs", {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + session?.user.token,
-                //authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVc2VSIiwiaWF0IjoxNzAzMjQ3MDEyLCJleHAiOjE3MDMzMzM0MTJ9.Esm197sUaTmUhdTXVKU-_LpXCvbuOp3N_ZMV_QC7h227Fi5U2oTSRdt7vyO3287CHq9oHJqaKXYbrDYmnFJ9BQ",
-                "Content-Type": "application/json",
-            },
-        });
-
-        const response = await res.json();
-        console.log(response);
-        setPost(response);
-    }
-
-    const fetchAuthors = async () => {
-        const res = await fetch("http://localhost:8080/user/favAuthors", {
-            method: "GET",
-            headers: {
-                authorization: 'Bearer ' + session?.user.token,
-                //authorization: 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJVc2VSIiwiaWF0IjoxNzAzMjQ3MDEyLCJleHAiOjE3MDMzMzM0MTJ9.Esm197sUaTmUhdTXVKU-_LpXCvbuOp3N_ZMV_QC7h227Fi5U2oTSRdt7vyO3287CHq9oHJqaKXYbrDYmnFJ9BQ",
-                "Content-Type": "application/json",
-            },
-        });
-
-        const response = await res.json();
-        console.log(response);
-        setAuthors(response);
-    }
-
-    useEffect(() => { fetchUser() }, [])
-    useEffect(() => { fetchAuthors() }, [])
 
     const hubsSlideLeft = () => {
         var slider = document.getElementById('hubs-slider')
@@ -68,6 +35,36 @@ export default function Page() {
         var slider = document.getElementById('authors-slider')
         slider.scrollLeft = slider.scrollLeft + 100
     }
+
+    const fetchFavouriteHubs = async () => {
+        const res = await fetch("http://localhost:8080/user/favHubs", {
+            method: "GET",
+            headers: {
+                authorization: 'Bearer ' + session?.user.token,
+                "Content-Type": "application/json",
+            },
+        });
+
+        const response = await res.json();
+        setFavouriteHubs(response);
+    }
+
+    const fetchFavouriteAuthors = async () => {
+        const res = await fetch("http://localhost:8080/user/favAuthors", {
+            method: "GET",
+            headers: {
+                authorization: 'Bearer ' + session?.user.token,
+                "Content-Type": "application/json",
+            },
+        });
+
+        const response = await res.json();
+        setFavouriteAuthors(response);
+    }
+
+    useEffect(() => { fetchFavouriteHubs() }, [])
+    useEffect(() => { fetchFavouriteAuthors() }, [])
+
     return (
         <div>
             <TopbarPosts />
@@ -76,7 +73,7 @@ export default function Page() {
                 <div className="flex items-center mx-3">
                     <button className="text-7xl hidden sm:block" onClick={hubsSlideLeft}>&#8249;</button>
                     <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="hubs-slider">
-                        {posts?.map((hub) => (
+                        {favouriteHubs?.map((hub) => (
                             <div className="snap-start">
                                 <HubCard className=""
                                     title={hub}
@@ -91,7 +88,7 @@ export default function Page() {
                 <div className="flex items-center mx-3">
                     <button className="text-7xl hidden sm:block" onClick={authorsSlideLeft}>&#8249;</button>
                     <div className="flex space-x-4 mx-1 sm:overflow-x-hidden overflow-x-auto snap-x scroll-smooth" id="authors-slider">
-                        {authors?.map((author) => (
+                        {favouriteAuthors?.map((author) => (
                             <div className="snap-start">
                                 <AuthorCard
                                     name={author}

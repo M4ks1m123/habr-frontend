@@ -42,50 +42,10 @@ export const authOptions = {
         },
 
         async session({ session, token }) {
-            //console.log(token, session);
-            //session.user.id = token.sub;
-            //console.log(session);
-
             session.user = token;
             return session;
         },
     }
-    /*
-    cookies: {
-        sessionToken: {
-            name: `__Secure-next-auth.session-token`,
-            options: {
-                httpOnly: true,
-                sameSite: "none",
-                path: "/",
-                secure: true,
-            },
-        },
-    },
-    
-    session: {
-        strategy: "jwt",
-        jwt: true,
-        maxAge: 30 * 24 * 60 * 60,
-    },
-    jwt: {
-        signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
-    },
-    callbacks: {
-        async session({ session, token }) {
-            console.log(token);
-            session.user = token.user;
-            session.id = token.id;
-            return session;
-        },
-        async jwt({ token, user }) {
-            if (user) {
-                token.user = user;
-            }
-            return token;
-        },
-    },
-    */
 };
 
 const handler = NextAuth(authOptions);

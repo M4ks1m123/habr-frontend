@@ -58,7 +58,7 @@ export default function Topbar() {
           <div className="space-x-4 items-center ps-4 hidden sm:flex">
 
             <li className="border-solid border-2 border-cyan-500">
-              <Link className="text-white text-2xl font-bold hover:text-slate-100" href="/dashboard">Хабр</Link>
+              <Link className="text-white text-2xl font-bold hover:text-slate-100" href="/dashboard">HabrHome</Link>
             </li>
             <li className="border-solid border-2 border-cyan-500">
               <Link className="text-white text-lg font-medium hover:text-slate-100" href="/dashboard">Dashboard</Link>
